@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoVG Entrepreneur Subscription</title>
+<style>
+:root{
+  --panel:rgba(255,255,255,.05);
+  --line:rgba(255,255,255,.12);
+  --text:#ffffff;
+  --muted:#b9c6d8;
+  --accent:#4de2ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(31,92,167,.45), transparent 35%),
+    radial-gradient(circle at 85% 10%, rgba(77,226,255,.18), transparent 25%),
+    linear-gradient(180deg, #081223 0%, #07111f 100%);
+  color:var(--text);
+}
+.wrap{max-width:1220px;margin:0 auto;padding:0 24px}
+.hero{padding:44px 0 24px}
+.topbar{display:flex;align-items:center;justify-content:center}
+.logo-shell{
+  display:inline-flex;align-items:center;gap:14px;
+  padding:14px 18px;border-radius:20px;
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.04));
+  box-shadow:0 18px 40px rgba(0,0,0,.20);
+}
+.logo-mark{
+  width:48px;height:48px;border-radius:14px;
+  background:linear-gradient(135deg, #ffffff 0%, #d9fbff 100%);
+  color:#081223;font-weight:800;font-size:17px;
+  display:flex;align-items:center;justify-content:center;
+}
+.logo-copy{line-height:1.05}
+.logo-copy .brand{font-size:22px;font-weight:800}
+.logo-copy .subbrand{font-size:11px;color:#d7e6f8;text-transform:uppercase;letter-spacing:.16em;margin-top:4px}
+.hero-inner{text-align:center;padding:34px 0 12px}
+.kicker{
+  display:inline-block;padding:8px 14px;border:1px solid rgba(77,226,255,.24);
+  background:rgba(77,226,255,.08);color:#c4f7ff;border-radius:999px;
+  font-size:13px;letter-spacing:.04em;margin-top:26px;
+}
+h1{
+  margin:18px auto 0;max-width:920px;font-size:clamp(36px,5vw,60px);
+  line-height:1.05;font-weight:800;
+}
+.sub{
+  max-width:950px;margin:20px auto 0;color:var(--muted);
+  font-size:20px;line-height:1.75;
+}
+.helper{
+  margin-top:22px;color:#98edf9;text-transform:uppercase;
+  letter-spacing:.18em;font-size:12px;
+}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:28px 0 24px}
+.card{
+  position:relative;border:1px solid var(--line);background:var(--panel);
+  border-radius:30px;padding:30px;box-shadow:0 18px 40px rgba(0,0,0,.22);
+  backdrop-filter: blur(8px);
+}
+.card.popular{
+  border-color:rgba(77,226,255,.38);
+  background:linear-gradient(180deg, rgba(77,226,255,.12), rgba(255,255,255,.05));
+  transform:translateY(-8px);
+}
+.badge{
+  position:absolute;top:-12px;left:24px;background:var(--accent);color:#03131e;
+  padding:8px 12px;border-radius:999px;font-size:12px;font-weight:800;
+}
+.badge.alt{background:#ffffff}
+.name{font-size:31px;font-weight:800}
+.tag{margin-top:10px;color:var(--muted);line-height:1.65;min-height:78px;font-size:15px}
+.price-block{margin-top:24px}
+.price-row{display:flex;align-items:end;gap:8px;margin-top:4px}
+.label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8fb1cf}
+.price-row .amt{font-size:44px;font-weight:800;line-height:1}
+.price-row .per{color:#93a8c1;padding-bottom:5px}
+.annual-note{
+  margin-top:10px;
+  padding:10px 12px;border-radius:14px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  color:#d8e9fb;font-size:14px;line-height:1.5;
+}
+.line{height:1px;background:var(--line);margin:22px 0}
+ul{padding:0;margin:0;list-style:none}
+li{
+  display:flex;gap:12px;align-items:flex-start;margin:12px 0;color:#deebfb;
+  font-size:15px;line-height:1.55;
+}
+.dot{
+  width:9px;height:9px;border-radius:50%;background:var(--accent);margin-top:8px;flex:0 0 auto;
+  box-shadow:0 0 0 4px rgba(77,226,255,.12);
+}
+.btns{margin-top:24px;display:grid;gap:10px}
+.btn{
+  display:block;width:100%;text-align:center;padding:14px;border-radius:16px;
+  font-weight:800;text-decoration:none;transition:.2s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.primary{background:var(--accent);color:#03131e}
+.secondary{border:1px solid rgba(255,255,255,.18);color:white;background:rgba(255,255,255,.04)}
+.pricing-note{
+  text-align:center;color:#97aec7;font-size:14px;line-height:1.7;margin:0 0 58px;
+}
+.faq-wrap{padding-bottom:70px}
+.faq-box{
+  border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border-radius:30px;padding:30px;
+}
+.faq-head{
+  display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:18px;
+}
+.faq-head h2{margin:0;font-size:34px}
+.faq-head p{margin:0;max-width:620px;color:var(--muted);line-height:1.7}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.faq-item{
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);
+  border-radius:22px;padding:20px;
+}
+.faq-item h3{margin:0 0 10px;font-size:18px}
+.faq-item p{margin:0;color:var(--muted);line-height:1.7;font-size:15px}
+.footer-note{margin-top:16px;text-align:center;color:#8ea5bf;font-size:13px}
+
+.faq-item{
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);
+  border-radius:22px;
+  margin-bottom:12px;
+  overflow:hidden;
+}
+.faq-question{
+  width:100%;
+  background:transparent;
+  border:none;
+  color:#fff;
+  font:inherit;
+  font-size:18px;
+  font-weight:600;
+  text-align:left;
+  padding:20px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.faq-icon{
+  color:#98edf9;
+  font-size:22px;
+  line-height:1;
+  margin-left:16px;
+}
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .28s ease, padding .28s ease;
+  padding:0 20px;
+}
+.faq-answer p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.7;
+  font-size:15px;
+}
+.faq-item.active .faq-answer{
+  max-height:220px;
+  padding:0 20px 20px;
+}
+.faq-item.active .faq-icon{
+  transform:rotate(45deg);
+}
+
+
+.logo-top{
+  padding-top:8px;
+  margin-bottom:-10px;
+}
+.logo-top img{
+  height:70px;
+  width:auto;
+  display:block;
+}
+@media (max-width: 980px){
+  .logo-top{
+    padding-top:10px;
+    margin-bottom:0;
+  }
+  .logo-top img{
+    height:60px;
+  }
+}
+
+@media (max-width: 980px){
+  .grid,.faq-grid{grid-template-columns:1fr}
+  .card.popular{transform:none}
+  .faq-head{flex-direction:column;align-items:flex-start}
+  .tag{min-height:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap"><div class="logo-top"><img src="Ecosystem-Logo-Color.png" alt="EcoSystem Venture Group logo"></div></div>
+
+<section class="hero wrap">
+
+  <div class="hero-inner">
+    <div class="kicker">EcoVG Entrepreneur Subscription</div>
+    <h1>Join The EcoVG Entrepreneur Ecosystem</h1>
+    <p class="sub">From foundational learning to direct investor introductions, our plans provide the education, community, and high-priority access you need to scale your startup at every stage.</p>
+    <div class="helper">Choose the plan that fits your founder journey</div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <div class="grid">
+    <article class="card">
+      <div class="name">Basic</div>
+      <div class="tag">For Founders starting their entrepreneur journey.</div>
+      <div class="price-block">
+        <div class="label">Monthly Membership</div>
+        <div class="price-row">
+          <div class="amt">$125</div>
+          <div class="per">/ month</div>
+        </div>
+</div>
+      <div class="line"></div>
+      <ul>
+        <li><span class="dot"></span><span>Online education & curated startup learning resources</span></li>
+        <li><span class="dot"></span><span>Educational sessions with founders, investors and industry professionals</span></li>
+        <li><span class="dot"></span><span>Access to online & in-person partner events</span></li>
+        <li><span class="dot"></span><span>Standard access to EcoVG programs and events</span></li>
+      </ul>
+      <div class="btns">
+        <a class="btn primary" href="#">Subscribe Now</a>
+</div>
+    </article>
+
+    <article class="card popular">
+      <div class="badge">Most Popular</div>
+      <div class="name">Growth</div>
+      <div class="tag">For founders who want deeper learning, stronger connections, and more momentum.</div>
+      <div class="price-block">
+        <div class="label">Monthly Membership</div>
+        <div class="price-row">
+          <div class="amt">$250</div>
+          <div class="per">/ month</div>
+        </div>
+</div>
+      <div class="line"></div>
+      <ul>
+        <li><span class="dot"></span><span>Everything in Basic</span></li>
+        <li><span class="dot"></span><span>Roundtable mastermind sessions</span></li>
+        <li><span class="dot"></span><span>Access to startup visibility platforms</span></li>
+        <li><span class="dot"></span><span>Advanced priority to EcoVG programs and events</span></li>
+        <li><span class="dot"></span><span>Advisory services access</span></li>
+        <li><span class="dot"></span><span>Premium AI tools (coming soon)</span></li>
+      </ul>
+      <div class="btns">
+        <a class="btn primary" href="#">Subscribe Now</a>
+</div>
+    </article>
+
+    <article class="card">
+      <div class="badge alt">Elite Access</div>
+      <div class="name">Elite</div>
+      <div class="tag">Complete access for Founders preparing to raise capital and grow.</div>
+      <div class="price-block">
+        <div class="label">Monthly Membership</div>
+        <div class="price-row">
+          <div class="amt">$400</div>
+          <div class="per">/ month</div>
+        </div>
+</div>
+      <div class="line"></div>
+      <ul>
+        <li><span class="dot"></span><span>Everything in Basic and Growth</span></li>
+        <li><span class="dot"></span><span>1 hour monthly 1:1 consulting</span></li>
+        <li><span class="dot"></span><span>Team building & hiring strategy support</span></li>
+        <li><span class="dot"></span><span>Warm introductions to investors, partners and advisors</span></li>
+        <li><span class="dot"></span><span>VIP priority access to EcoVG programs</span></li>
+        <li><span class="dot"></span><span>Guest access to exclusive investor events</span></li>
+      </ul>
+      <div class="btns">
+        <a class="btn primary" href="#">Subscribe Now</a>
+</div>
+    </article>
+  </div>
+
+  
+
+  
+  <section class="faq-wrap">
+    <div class="faq-box">
+      <div class="faq-head">
+        <div><h2>Frequently Asked Questions</h2></div>
+        
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">Can I cancel my subscription?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Yes. Monthly memberships can be cancelled anytime and remain active until the end of the billing cycle. </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">Can I upgrade to another plan later?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Yes. Founders can move from Basic to Growth or Elite as their startup needs evolve and as they want more ecosystem access, support, and investor-facing opportunities.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">Are events included in the plans?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>Yes. EcoVG plans include access to relevant online and in-person events, with higher tiers receiving stronger priority and deeper ecosystem access.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">Who is this subscription designed for?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">
+          <p>This is designed for entrepreneurs who want structured learning, a stronger founder network, and the right support system as they prepare for growth, fundraising, and investor conversations.</p>
+        </div>
+      </div>
+
+      <div class="footer-note"></div>
+    </div>
+  </section>
+
+
+</main>
+
+<script>
+document.querySelectorAll('.faq-question').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    btn.parentElement.classList.toggle('active');
+  });
+});
+</script>
+
+</body>
+</html>
